@@ -1,0 +1,51 @@
+<definitions name="HelloService"
+targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl"
+xmlns="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<message name="getCalculatorRequest">
+<part name="weight" type="xsd:float"/>
+<part name="height" type="xsd:float"/>
+</message>
+
+<message name="getCalculatorResponse">
+<part name="calculator" type="xsd:float"/>
+</message>
+
+<portType name="Hello_PortType">
+<operation name="calculate">
+<input message="tns:getCalculatorRequest"/>
+<output message="tns:getCalculatorResponse"/>
+</operation>
+</portType>
+
+<binding name="Hello_Binding" type="tns:Hello_PortType">
+<soap:binding style="rpc"
+transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="calculate">
+<soap:operation soapAction="calculate"/>
+<input>
+<soap:body
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+namespace="urn:examples:helloservice"
+use="encoded"/>
+</input>
+<output>
+<soap:body
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+namespace="urn:examples:helloservice"
+use="encoded"/>
+</output>
+</operation>
+</binding>
+
+<service name="calculator_service">
+<documentation>WSDL File for HelloService</documentation>
+<port binding="tns:Hello_Binding" name="caclulator_port">
+<soap:address
+location="http://localhost:3030/calculator/" />
+</port>
+</service>
+</definitions>
