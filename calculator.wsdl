@@ -6,8 +6,8 @@ xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 <message name="getCalculatorRequest">
-<part name="weight" type="xsd:float"/>
-<part name="height" type="xsd:float"/>
+<part name="a" type="xsd:float"/>
+<part name="b" type="xsd:float"/>
 </message>
 
 <message name="getCalculatorResponse">

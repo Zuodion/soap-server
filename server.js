@@ -2,6 +2,7 @@ var soap = require('soap');
 var express = require('express');
 var app = express();
 
+// Server side
 var service = {
     calculator_service: {
         caclulator_port: {
